@@ -7,6 +7,7 @@ use Faker\Generator;
 use App\Entity\Produit;
 use App\Entity\Categorie;
 use App\Entity\SousCategorie;
+use App\Entity\User;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
@@ -25,6 +26,41 @@ class AppFixtures extends Fixture
     
     public function load(ObjectManager $manager): void
     {
+
+        // USERS
+        $users = [];
+
+        $admin = new User();
+        $admin->setEmail('admin@bestbrico.com')
+            ->setRoles(["ROLE_ADMIN"])
+            ->setNom('administrateur') 
+            ->setPrenom('admin')
+            ->setAdresse('5 rue Vulfran Mollet')
+            ->setCodePostal('80000') 
+            ->setVille('Amiens')
+            ->setPlainPassword('password');           
+            
+        $users[] = $admin;
+        $manager->persist($admin);
+
+        
+    for ($j = 1; $j <=5; $j++)
+        { 
+        $user = new User();
+        $user->setEmail($this->faker->email);
+        $user ->setRoles(["ROLE_USER"]);
+        $user->setNom($this->faker->name) ;
+        $user->setPrenom($this->faker->firstName);
+        $user->setAdresse($this->faker->streetAddress());
+        $user->setCodePostal(str_replace(' ','', $this->faker->postcode)); 
+        $user->setVille($this->faker->city);
+        $user->setPlainPassword('password');
+        
+        $users[] = $user;
+        $manager->persist($user);
+        }
+
+        // CATEGORIES
         $Categorie1 = new Categorie();
         $Categorie1->setNom("Gros oeuvre");
         $Categorie1->setImagesrc("/grosOeuvre.jpg");
@@ -55,6 +91,7 @@ class AppFixtures extends Fixture
         $Categorie6->setImagesrc("/peinture.jpg");
         $manager->persist($Categorie6);
 
+                // SOUS CATEGORIES
                 $SousCategorie1 = new SousCategorie();
                 $SousCategorie1->setNom("Construction");
                 $SousCategorie1->setCategorie($Categorie1);
@@ -114,10 +151,8 @@ class AppFixtures extends Fixture
                 $SousCategorie12->setNom("Droguerie");
                 $SousCategorie12->setCategorie($Categorie6);
                 $manager->persist($SousCategorie12);
-                
-                
-       
-                      
+         
+                // PRODUITS
        for ($i=1 ; $i < 60 ; $i++ ) { 
             $produit = new Produit();
             $produit ->setNom($this->faker->word())
