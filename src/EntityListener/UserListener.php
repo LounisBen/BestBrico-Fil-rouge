@@ -35,9 +35,7 @@ class UserListener
             return;
         }
         $user->setPassword(
-            $this->hasher->hashPassword(
-                $user,
-                $user->getPlainPassword()
+            $this->hasher->hashPassword($user, $user->getPlainPassword()
             )
         );
         $user->setPlainPassword(null);
