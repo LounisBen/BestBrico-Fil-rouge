@@ -3,7 +3,11 @@
 namespace App\Entity;
 
 use App\Repository\ProduitRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ProduitRepository::class)]
 class Produit
@@ -13,16 +17,23 @@ class Produit
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 150)]
+    #[Assert\NotBlank()]
+    #[Assert\Length(min: 2, max: 150)]
     private ?string $nom = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank()]
     private ?string $description = null;
 
     #[ORM\Column]
-    private ?int $prix = null;
+    #[Assert\NotNull()]
+    #[Assert\Positive()]
+    private ?float $prix = null;
 
     #[ORM\Column]
+    #[Assert\NotNull()]
+    #[Assert\Positive()]
     private ?int $stock = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -34,6 +45,14 @@ class Produit
     #[ORM\ManyToOne(inversedBy: 'produits')]
     #[ORM\JoinColumn(nullable: false)]
     private ?SousCategorie $sousCategorie = null;
+
+    #[ORM\OneToMany(mappedBy: 'produit', targetEntity: DetailCommande::class)]
+    private Collection $detailCommandes;
+
+    public function __construct()
+    {
+        $this->detailCommandes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -120,6 +139,36 @@ class Produit
     public function setSousCategorie(?SousCategorie $sousCategorie): self
     {
         $this->sousCategorie = $sousCategorie;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, DetailCommande>
+     */
+    public function getDetailCommandes(): Collection
+    {
+        return $this->detailCommandes;
+    }
+
+    public function addDetailCommande(DetailCommande $detailCommande): self
+    {
+        if (!$this->detailCommandes->contains($detailCommande)) {
+            $this->detailCommandes->add($detailCommande);
+            $detailCommande->setProduit($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDetailCommande(DetailCommande $detailCommande): self
+    {
+        if ($this->detailCommandes->removeElement($detailCommande)) {
+            // set the owning side to null (unless already changed)
+            if ($detailCommande->getProduit() === $this) {
+                $detailCommande->setProduit(null);
+            }
+        }
 
         return $this;
     }

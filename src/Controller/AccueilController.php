@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Produit;
 use App\Entity\Categorie;
 use App\Entity\SousCategorie;
+use App\Repository\ProduitRepository;
 use App\Repository\CategorieRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -42,6 +44,18 @@ class AccueilController extends AbstractController
         return $this->render('accueil/souscategorie.html.twig', [
             'produits' => $produits,
             'souscategorie' => $souscategorie,
+            
+          
+        ]);
+       
+    }
+
+    #[Route('/produit/{id}', name: 'app_detail')]
+    public function detail(Produit $produit): Response
+    {
+        return $this->render('accueil/detail.html.twig', [
+            'detail' => $produit,
+            
             
           
         ]);

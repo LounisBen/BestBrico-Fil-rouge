@@ -14,8 +14,8 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class UserController extends AbstractController
 {
-    #[Route('/utilisateur/edition/{id}', name: 'user')]
-    public function edit(User $user, Request $request, EntityManagerInterface $manager, UserPasswordHasherInterface $hasher): Response
+    #[Route('/utilisateur/edition/{id}', name: 'user.edit', methods: ['GET', 'POST'])]
+    public function userEdit(User $user, Request $request, EntityManagerInterface $manager, UserPasswordHasherInterface $hasher): Response
     {
         if (!$this->getUser())  // On vérifie si l'utilisateur est connecté
         {
@@ -55,7 +55,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/utilisateur/edition-mot-de-passe/{id}')]
+    #[Route('/utilisateur/edition-mot-de-passe/{id}', name: 'editPassword', methods: ['GET', 'POST'])] 
     public function editPassword(User $user, Request $request, EntityManagerInterface $manager, UserPasswordHasherInterface $hasher): Response
     {
         if (!$this->getUser())  

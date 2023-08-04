@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">BestBrico</font></font></a>
+    <a class="navbar-brand" href="/">BestBrico</font></font></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Basculer la navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -16,17 +16,28 @@
           </a>
           </li>
           {% endfor %}
-                
+      </ul>  
+      
+      <ul class="navbar-nav me-auto">
+      {% if app.user %}
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Connexion</font></font></a>
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ app.user.prenom}}</font></font></a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Action</font></font></a>
-            <a class="dropdown-item" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Une autre action</font></font></a>
-            <a class="dropdown-item" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Quelque chose d'autre ici</font></font></a>
+            <a class="dropdown-item" href="{{ path("logout") }}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Me déconnecter</font></font></a>
+            <a class="dropdown-item" href="{{ path("user.edit", {id : app.user.id}) }}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Modifier mes informations</font></font></a>
+            <a class="dropdown-item" href="{{ path("editPassword", {id : app.user.id}) }}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Changer mon mot de passe</font></font></a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Lien séparé</font></font></a>
           </div>
-        </li>
+        </li>  
+      {% else %}
+      <li class="navbar-nav me-auto">
+        
+          <a class="nav-link active" href="{{ path('login')}}">Connexion</a>
+          <a class="nav-link active" href="{{ path('registration')}}">Inscription</a>
+        
+      </li>
+      {% endif %}
       </ul>
       <form class="d-flex">
         <input class="form-control me-sm-2" type="search" placeholder="Que recherchez-vous?">

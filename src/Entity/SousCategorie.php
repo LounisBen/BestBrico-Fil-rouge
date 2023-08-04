@@ -19,7 +19,7 @@ class SousCategorie
     private ?string $nom = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $image = null;
+    private ?string $imagesrc = null;
 
     #[ORM\ManyToOne(inversedBy: 'sousCategories')]
     private ?Categorie $categorie = null;
@@ -91,14 +91,14 @@ class SousCategorie
         return $this;
     }
 
-    public function getImage(): ?string
+    public function getImagesrc(): ?string
     {
-        return $this->image;
+        return $this->imagesrc;
     }
 
-    public function setImage(?string $image): self
+    public function setImagesrc(?string $imagesrc): self
     {
-        $this->image = $image;
+        $this->imagesrc = $imagesrc;
 
         return $this;
     }

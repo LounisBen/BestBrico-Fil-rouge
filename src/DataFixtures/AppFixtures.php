@@ -95,61 +95,73 @@ class AppFixtures extends Fixture
                 // SOUS CATEGORIES
                 $SousCategorie1 = new SousCategorie();
                 $SousCategorie1->setNom("Construction");
+                $SousCategorie1->setImagesrc("/construction.jpg");
                 $SousCategorie1->setCategorie($Categorie1);
                 $manager->persist($SousCategorie1);
 
                 $SousCategorie2 = new SousCategorie();
                 $SousCategorie2->setNom("Aménagement");
+                $SousCategorie2->setImagesrc("/amenagement.jpg");
                 $SousCategorie2->setCategorie($Categorie1);
                 $manager->persist($SousCategorie2);
                 
                 $SousCategorie3 = new SousCategorie();
                 $SousCategorie3->setNom("Menuiserie intérieure");
+                $SousCategorie3->setImagesrc("/menuiserieInterieure.jpg");
                 $SousCategorie3->setCategorie($Categorie2);
                 $manager->persist($SousCategorie3);
 
                 $SousCategorie4 = new SousCategorie();
                 $SousCategorie4->setNom("Menuiserie extérieure");
+                $SousCategorie4->setImagesrc("/menuiserieExterieure.jpg");
                 $SousCategorie4->setCategorie($Categorie2);
                 $manager->persist($SousCategorie4);
 
                 $SousCategorie5 = new SousCategorie();
                 $SousCategorie5->setNom("Cables,appareillages et luminaires");
+                $SousCategorie5->setImagesrc("/cablesAppareillages.jpg");
                 $SousCategorie5->setCategorie($Categorie3);
                 $manager->persist($SousCategorie5);
 
                 $SousCategorie6 = new SousCategorie();
                 $SousCategorie6->setNom("Chauffage et Domotique");
+                $SousCategorie6->setImagesrc("/chauffageDomotique.jpg");
                 $SousCategorie6->setCategorie($Categorie3);
                 $manager->persist($SousCategorie6);
 
                 $SousCategorie7 = new SousCategorie();
                 $SousCategorie7->setNom("Plomberie");
+                $SousCategorie7->setImagesrc("/plomberie.jpg");
                 $SousCategorie7->setCategorie($Categorie4);
                 $manager->persist($SousCategorie7);
 
                 $SousCategorie8 = new SousCategorie();
                 $SousCategorie8->setNom("Sanitaire");
+                $SousCategorie8->setImagesrc("/sanitaire.jpg");
                 $SousCategorie8->setCategorie($Categorie4);
                 $manager->persist($SousCategorie8);
 
                 $SousCategorie9 = new SousCategorie();
                 $SousCategorie9->setNom("Machines et Outillage");
+                $SousCategorie9->setImagesrc("/machinesOutils.jpg");
                 $SousCategorie9->setCategorie($Categorie5);
                 $manager->persist($SousCategorie9);
 
                 $SousCategorie10 = new SousCategorie();
                 $SousCategorie10->setNom("Consommables");
+                $SousCategorie10->setImagesrc("/consommables.jpg");
                 $SousCategorie10->setCategorie($Categorie5);
                 $manager->persist($SousCategorie10);
 
                 $SousCategorie11 = new SousCategorie();
                 $SousCategorie11->setNom("Peintures et poudres");
+                $SousCategorie11->setImagesrc("/peinturePoudres.jpg");
                 $SousCategorie11->setCategorie($Categorie6);
                 $manager->persist($SousCategorie11);
 
                 $SousCategorie12 = new SousCategorie();
                 $SousCategorie12->setNom("Droguerie");
+                $SousCategorie12->setImagesrc("/droguerie.jpg");
                 $SousCategorie12->setCategorie($Categorie6);
                 $manager->persist($SousCategorie12);
          
