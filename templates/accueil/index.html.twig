@@ -18,7 +18,7 @@
         ne cherchez plus, vous êtes au bon endroit. Nous vous proposons un grand choix de marques au meilleur prix, élu meilleur site par nos artisans.</p>
             <hr class="my-2">
 
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-3 ">
             {% for cat in categories %}
                 <div class="row">
                     <a href="{{ path("app_categorie", {id: cat.id}) }}">
@@ -38,7 +38,7 @@
         </div>
     <div>
         <center>
-            <p>Créez votre compte : <a class="btn btn-primary btn-sm" href="{{ path("registration") }}" role="button">Inscription</a></p> 
+            <p>Créez votre compte : <a class="btn btn-primary btn-sm" href="{{ path("registration") }}" role="button">Créer votre compte</a></p> 
         </center>
-   
+    </div>
 {% endblock %}
