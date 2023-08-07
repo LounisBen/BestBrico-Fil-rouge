@@ -11,6 +11,7 @@
                     <thead>
                         <tr>
                             <th scope="col">Produit</th>
+                            <th scope="col">Image</th>
                             <th scope="col">Prix</th>
                             <th scope="col">Quantité</th>
                             <th scope="col">Total</th>
@@ -21,6 +22,7 @@
                     {% for article in liste %}
                         <tr class="table-primary">
                             <td>{{ article.produit.nom }}</td>
+                            <td>{{ article.produit.image }}</td>
                             <td>{{ article.produit.prix / 100 }} €</td>
                             <td>{{ article.quantite }}</td>
                             <td>{{ article.quantite * article.produit.prix / 100}} €</td>
@@ -30,6 +32,7 @@
                             <a href="{{ path('app_delete', {id: article.produit.id}) }}" class="btn btn-outline-secondary btn-sm">Supprimer</a>
                             </td>
                         </tr>
+                        
                     {% else %}
                         <tr>
                         <td colspan="5">Votre panier est vide</td>
@@ -47,7 +50,7 @@
                         </tr>
                     </tfoot>
                 </table>
-                <a href="#" class="btn btn-outline-primary btn-sm">Valider le panier</a>
+                <a href="{{ path('app_commande') }}" class="btn btn-outline-primary btn-sm">Valider le panier</a>
             </div>
         </section>
     </main>

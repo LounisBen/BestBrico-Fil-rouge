@@ -12,7 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class PanierController extends AbstractController
 {
     #[Route('/panier', name: 'app_panier')]
-    public function index(ProduitRepository $produitRepository, SessionInterface $session): Response
+    public function panier(ProduitRepository $produitRepository, SessionInterface $session): Response
     {
         $panier = $session->get('panier', []);
 

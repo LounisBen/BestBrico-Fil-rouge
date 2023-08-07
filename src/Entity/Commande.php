@@ -21,10 +21,10 @@ class Commande
     #[ORM\Column(length: 20, nullable: true)]
     private ?string $statut = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)] 
     private ?bool $paye = null;
 
-    #[ORM\OneToMany(mappedBy: 'commande', targetEntity: DetailCommande::class)]
+    #[ORM\OneToMany(mappedBy: 'commande', targetEntity: DetailCommande::class, orphanRemoval: true, cascade: ['persist'])]
     private Collection $detailCommandes;
 
     #[ORM\ManyToOne(inversedBy: 'commandes')]
