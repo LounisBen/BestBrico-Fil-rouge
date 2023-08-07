@@ -14,7 +14,7 @@
            
         {% for sc in sousCategories %}
         <div class="d-flex justify-content-center flex-wrap">
-            <div class="card d-flex col-5">
+            <div class="card d-flex col-6">
             <a href="{{ path("app_produit", {id: sc.id}) }}">
                 <div class="card text-white bg-primary mb-4 ">
                     <div class="card-header d-flex justify-content-center">{{ sc.nom }}</div>
@@ -30,6 +30,7 @@
             </div>
         </div>
         {% endfor %} 
+ 
         
     </div>
 </div>

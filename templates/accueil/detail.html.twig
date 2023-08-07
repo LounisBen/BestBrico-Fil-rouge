@@ -18,7 +18,7 @@
                 <p>Secteur : {{ detail.SousCategorie.nom }}</p>
                 <p>Prix : {{ detail.prix / 100 }} €</p>
                 {% if detail.stock > 0 %}
-                    <a href="" class="btn btn-success">Ajouter au panier</a>
+                    <a href="{{ path('app_add', {id: detail.id}) }}" class="btn btn-success">Ajouter au panier</a>
                 {% else %}
                     <p class="text-danger">Temporairement en rupture de stock</p>
                 {% endif %}

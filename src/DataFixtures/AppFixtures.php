@@ -170,7 +170,7 @@ class AppFixtures extends Fixture
             $produit = new Produit();
             $produit ->setNom($this->faker->word())
                 ->setDescription($this->faker->text(200))
-                ->setPrix(mt_rand(1, 5000))
+                ->setPrix(mt_rand(100, 500000))
                 ->setStock(mt_rand(0, 1000))
                 ->setActif(mt_rand(0, 1) == 1 ? true : false );
             $randomSousCategorie = $this->faker->randomElement([$SousCategorie1, $SousCategorie2, $SousCategorie3, $SousCategorie4, $SousCategorie5, $SousCategorie6, $SousCategorie7, $SousCategorie8, $SousCategorie9, $SousCategorie10, $SousCategorie11, $SousCategorie12]);
