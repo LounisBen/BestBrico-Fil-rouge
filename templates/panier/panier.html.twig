@@ -1,12 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Panier{% endblock %}
+{% block title %}BestBrico - Panier{% endblock %}
 
 {% block body %}
-    <main class="container">
-        <section class="row">
+    <div class="container">
+        
             <div class="col-12">
                 <h1>Panier</h1>
+                <hr my-4>
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -15,7 +16,7 @@
                             <th scope="col">Prix</th>
                             <th scope="col">Quantité</th>
                             <th scope="col">Total</th>
-                            <th scope="col">Action</th>
+                            <th class="text-center align-middle" scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -27,15 +28,18 @@
                             <td>{{ article.quantite }}</td>
                             <td>{{ article.quantite * article.produit.prix / 100}} €</td>
                             <td>
-                            <a href="{{ path('app_add', {id: article.produit.id}) }}" class="btn btn-outline-primary">+</a>
-                            <a href="{{ path('app_remove', {id: article.produit.id}) }}" class="btn btn-outline-primary">-</a>
-                            <a href="{{ path('app_delete', {id: article.produit.id}) }}" class="btn btn-outline-secondary btn-sm">Supprimer</a>
+                            <div class="d-flex justify-content-center align-items-center">
+                            <a href="{{ path('app_add', {id: article.produit.id}) }}" class="btn btn-outline-primary" title="Ajouter un article">+</a>
+                            <a href="{{ path('app_remove', {id: article.produit.id}) }}" class="btn btn-outline-primary" title="Supprimer un article">-</a>
+                            <a href="{{ path('app_delete', {id: article.produit.id}) }}" class="btn btn-outline-secondary" title="Supprimer la ligne"><i class="fa-solid fa-trash"></i>
+                            </a>
+                            </div>
                             </td>
                         </tr>
                         
                     {% else %}
                         <tr>
-                        <td colspan="5">Votre panier est vide</td>
+                        <td colspan="5">Votre panier est vide !</td>
                         </tr>
                         
                     {% endfor %}
@@ -52,6 +56,6 @@
                 </table>
                 <a href="{{ path('app_commande') }}" class="btn btn-outline-primary btn-sm">Commander</a>
             </div>
-        </section>
-    </main>
+       
+    </div>
 {% endblock %}

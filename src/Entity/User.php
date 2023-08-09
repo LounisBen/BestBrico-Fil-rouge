@@ -51,6 +51,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $adresse = null;
 
     #[ORM\Column(length: 5)]
+    #[Assert\Length(5)]
     private ?string $codePostal = null;
 
     #[ORM\Column(length: 50)]
