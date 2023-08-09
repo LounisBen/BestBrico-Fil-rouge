@@ -26,10 +26,17 @@
             <a class="dropdown-item" href="{{ path("logout") }}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Me déconnecter</font></font></a>
             <a class="dropdown-item" href="{{ path("user.edit", {id : app.user.id}) }}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Modifier mes informations</font></font></a>
             <a class="dropdown-item" href="{{ path("editPassword", {id : app.user.id}) }}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Changer mon mot de passe</font></font></a>
+            
+            {% if 'ROLE_ADMIN' in app.user.roles %}
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Lien séparé</font></font></a>
+            <a class="dropdown-item" href="{{ path("admin") }}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Administration des utilisateurs</font></font></a>
           </div>
-        </li>  
+        </li>     
+            
+            {% endif %}
+            
+            
+        
       {% else %}
       <li class="navbar-nav me-auto">
           <a class="nav-link active" href="{{ path('login')}}">Connexion</a>

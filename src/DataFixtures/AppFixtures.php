@@ -33,7 +33,7 @@ class AppFixtures extends Fixture
 
         $admin = new User();
         $admin->setEmail('admin@bestbrico.com')
-            ->setRoles(["ROLE_ADMIN"])
+            ->setRoles(["ROLE_USER", "ROLE_ADMIN"])
             ->setNom('administrateur') 
             ->setPrenom('admin')
             ->setAdresse('5 rue Vulfran Mollet')
