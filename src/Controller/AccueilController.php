@@ -50,7 +50,7 @@ class AccueilController extends AbstractController
        
     }
 
-    #[Route('/produit/{id}', name: 'app_detail')]
+    #[Route('/detail/{id}', name: 'app_detail')]
     public function detail(Produit $produit): Response
     {
         return $this->render('accueil/detail.html.twig', [

@@ -1,15 +1,25 @@
-.footer {
-  position: sticky !important;
+
+.footer1 {
+  position: fixed;
   bottom: 0;
   width: 100%;
-  height: 60px;
-  background: rgb(100, 192, 241);
-  color: #ffffff;
+  height: 40px;
+  background: #f0f3f3;
+  color: #FFFFFF;
 }
 
-/* .footer1{
-  position: fixed !important;
-  bottom: 0px !important; 
-  width: 100% !important;
-  height: 4rem;    
-}   */
+.imagesHeader {
+
+  width: 100vw;
+  height: 100vh;
+  background-image: url("/images/fond1.jpg") !important;
+  
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-position: left; */
+  background-attachment: fixed;
+  
+}
+
+
+

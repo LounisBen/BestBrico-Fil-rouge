@@ -3,27 +3,29 @@
 {% block title %}BestBrico - Panier{% endblock %}
 
 {% block body %}
-    <div class="container">
+    <div class="container mt-4">
         
-            <div class="col-12">
-                <h1>Panier</h1>
+            <div class="col-10 mx-auto">
+                <h1 class="text-center">BestBrico, votre panier</h1>
                 <hr my-4>
-                <table class="table table-hover">
+                <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Produit</th>
+                            <th style="width: 30%;">Produit</th>
                             <th scope="col">Image</th>
-                            <th scope="col">Prix</th>
+                            <th scope="col" style="width: 15%;">Prix</th>
                             <th scope="col">Quantité</th>
-                            <th scope="col">Total</th>
+                            <th scope="col" style="width: 15%;">Total</th>
                             <th class="text-center align-middle" scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                     {% for article in liste %}
-                        <tr class="table-primary">
+                        <tr class="table-secondary">
                             <td>{{ article.produit.nom }}</td>
-                            <td>{{ article.produit.image }}</td>
+                            <td>{{ article.produit.image }}
+                                <img style="max-width: 50%;" src="{{ vich_uploader_asset(article.produit, 'imageFile')}}"> 
+                            </td>
                             <td>{{ article.produit.prix / 100 }} €</td>
                             <td>{{ article.quantite }}</td>
                             <td>{{ article.quantite * article.produit.prix / 100}} €</td>
@@ -39,23 +41,24 @@
                         
                     {% else %}
                         <tr>
-                        <td colspan="5">Votre panier est vide !</td>
+                        <td colspan="6">Votre panier est vide !</td>
                         </tr>
                         
                     {% endfor %}
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="3">Total du panier :</td>
-                            <td> {{ total / 100 }} €</td>
+                            <td colspan="4">Total du panier :</td>
+                            <td> {{ total / 100 }} € H.T</td>
                             <td>
                                 <a href="/empty" class="btn btn-outline-danger btn-sm">Vider le panier</a>
                             </td>
                         </tr>
                     </tfoot>
                 </table>
-                <a href="{{ path('app_commande') }}" class="btn btn-outline-primary btn-sm">Commander</a>
+                <center>
+                <a href="{{ path('app_commande') }}" class="btn btn-outline-primary">Commander</a>
+                </center>
             </div>
-    
     </div>
 {% endblock %}

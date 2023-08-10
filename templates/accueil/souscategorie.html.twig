@@ -6,14 +6,19 @@
     <div class="container">
         <div class="row">
             <div class="col-6">
-                <h1>Secteur {{ souscategorie.nom }}</h1>
+                <h1>{{ souscategorie.categorie.nom }} {{ souscategorie.nom }}</h1>
                 <hr>
                 <div class="card mx-2">
                     {% for produit in produits %}
                         <div class="card text-white bg-primary mb-4">
-                            {% if produit.image %}
-                                <img src="{{ asset('images/' ~ produit.image) }}" class="card-img-top" alt="produit">
-                                <img src="/images/produit{{ produit.imagesrc }}" alt="produit" style="max-height: 200px; width: 100%;">
+                            {% if produit.imageName %}
+                                <div class="produitImage">
+                                    <a href="{{ path("app_detail", { id: produit.id}) }}">
+                                    <img style="max-width: 20%;" src="{{ vich_uploader_asset(produit, 'imageFile')}}">
+                                    {# <img src="{{ asset('images/' ~ produit.image) }}" class="card-img-top" alt="produit">
+                                    <img src="/images/produit{{ produit.imagesrc }}" alt="produit" style="max-height: 200px; width: 100%;"> #}
+                                </div>    
+                                
                             {% endif %}
                             <div class="card-body">
                                 <h5 class="card-title">{{ produit.nom }}</h5>

@@ -63,7 +63,7 @@ class AppFixtures extends Fixture
 
         // CATEGORIES
         $Categorie1 = new Categorie();
-        $Categorie1->setNom("Gros oeuvre");
+        $Categorie1->setNom("Gros.oeuvre");
         $Categorie1->setImagesrc("/grosOeuvre.jpg");
         $manager->persist($Categorie1);
        
@@ -78,7 +78,7 @@ class AppFixtures extends Fixture
         $manager->persist($Categorie3);
 
         $Categorie4 = new Categorie();
-        $Categorie4->setNom("Plomberie et Sanitaire");
+        $Categorie4->setNom("Plomberie.Sanitaire");
         $Categorie4->setImagesrc("/plomberieSanitaire.jpg");
         $manager->persist($Categorie4);
 
@@ -106,25 +106,25 @@ class AppFixtures extends Fixture
                 $manager->persist($SousCategorie2);
                 
                 $SousCategorie3 = new SousCategorie();
-                $SousCategorie3->setNom("Menuiserie intérieure");
+                $SousCategorie3->setNom("Intérieure");
                 $SousCategorie3->setImagesrc("/menuiserieInterieure.jpg");
                 $SousCategorie3->setCategorie($Categorie2);
                 $manager->persist($SousCategorie3);
 
                 $SousCategorie4 = new SousCategorie();
-                $SousCategorie4->setNom("Menuiserie extérieure");
+                $SousCategorie4->setNom("Extérieure");
                 $SousCategorie4->setImagesrc("/menuiserieExterieure.jpg");
                 $SousCategorie4->setCategorie($Categorie2);
                 $manager->persist($SousCategorie4);
 
                 $SousCategorie5 = new SousCategorie();
-                $SousCategorie5->setNom("Cables,appareillages et luminaires");
+                $SousCategorie5->setNom("Cables.Appareillages");
                 $SousCategorie5->setImagesrc("/cablesAppareillages.jpg");
                 $SousCategorie5->setCategorie($Categorie3);
                 $manager->persist($SousCategorie5);
 
                 $SousCategorie6 = new SousCategorie();
-                $SousCategorie6->setNom("Chauffage et Domotique");
+                $SousCategorie6->setNom("Chauffage.Domotique");
                 $SousCategorie6->setImagesrc("/chauffageDomotique.jpg");
                 $SousCategorie6->setCategorie($Categorie3);
                 $manager->persist($SousCategorie6);
@@ -142,7 +142,7 @@ class AppFixtures extends Fixture
                 $manager->persist($SousCategorie8);
 
                 $SousCategorie9 = new SousCategorie();
-                $SousCategorie9->setNom("Machines et Outillage");
+                $SousCategorie9->setNom("Equipement");
                 $SousCategorie9->setImagesrc("/machinesOutils.jpg");
                 $SousCategorie9->setCategorie($Categorie5);
                 $manager->persist($SousCategorie9);
@@ -154,7 +154,7 @@ class AppFixtures extends Fixture
                 $manager->persist($SousCategorie10);
 
                 $SousCategorie11 = new SousCategorie();
-                $SousCategorie11->setNom("Peintures et poudres");
+                $SousCategorie11->setNom("Peintures.Poudres");
                 $SousCategorie11->setImagesrc("/peinturePoudres.jpg");
                 $SousCategorie11->setCategorie($Categorie6);
                 $manager->persist($SousCategorie11);
