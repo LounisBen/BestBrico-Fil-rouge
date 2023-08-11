@@ -20,6 +20,17 @@
   background-attachment: fixed;
   
 }
+.box {
+  width:10px !important;
+  height:10px !important;
+  border: 1px solid black;
+}
+
+.box img {
+  max-width: 100% !important;
+  max-height: 100% !important;
+}
+
 
 
 

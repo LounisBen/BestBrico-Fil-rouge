@@ -18,7 +18,7 @@
             
                     <div class="row">
                         <center>
-                        <h1 class="text-primary" style="font-size: 4rem;font-weight:bold;">Bienvenue sur BestBrico</h1>
+                        <h1 class="dispaly-1 text-primary text-center">Bienvenue sur BestBrico</h1>
                         </center>
                         <p class="lead">Tout le matériel dont vous aurez besoin, que ce soit pour vos travaux de construction ou d'aménagement, équiper un bien immobilier,
                         ne cherchez plus, vous êtes au bon endroit. Nous vous proposons un grand choix de marques au meilleur prix, élu meilleur site par nos artisans.</p>
@@ -32,7 +32,7 @@
                         <a href="{{ path("app_categorie", {id: cat.id}) }}">
                             <div class="card text-white bg-primary mb-2">
                         
-                                <div class="card-header d-flex justify-content-center h3">{{ cat.nom }}</div>
+                                <div class="card-header d-flex justify-content-center h2">{{ cat.nom }}</div>
                                 <div class="card-body d-flex flex-column align-items-center justify-content-center">
                                 <img src="/images/categorie/{{ cat.imagesrc }}" alt="categorie" style="max-height: 200px; width: 100%;">
                                 <p class="card-text text-center"></p>
@@ -48,7 +48,7 @@
         </div>
     <div>
         <center>
-            <p>Créez votre compte : <a class="btn btn-primary btn-sm" href="{{ path("registration") }}" role="button">Créer votre compte</a></p> 
+            <p>Pour commander : <a class="btn btn-primary btn-sm" href="{{ path("registration") }}" role="button">Créer votre compte</a></p> 
         </center>
     </div>
     
