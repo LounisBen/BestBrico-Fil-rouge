@@ -4,7 +4,7 @@
 
 {% block body %}
     <div class="container mt-4">
-        <div class="content-container" style="margin-top: 70px;">
+        <div class="content-container" style="margin-top: 100px;">
             <div class="col-10 mx-auto">
                 <h1 class="text-center">BestBrico, votre panier</h1>
                 <hr my-4>
@@ -59,7 +59,35 @@
                 <center>
                 <a href="{{ path('app_commande') }}" class="btn btn-outline-primary">Commander</a>
                 </center>
-            </div>
-        </div>
+                <form>
+                <input type="button" class="btn btn-outline-primary" value="<< Retour" onclick="history.go(-1)">
+                </form>
+            <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+    <h2 class="text-center mt-4">Nos offres en pack chantier !</h2>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="images/caroussel/lotAEG.jpg" class="d-block w-100" alt="MAKITA Kit MK1101 (DDF482+DHR171+ DGA504+ DTD152+ DJV182+ DSS610+ DJR186+ DBO180+ DTM51+ DML802+ DTW190+3x5,0Ah+DC18RD+2xLXT600)">
     </div>
+    <div class="carousel-item">
+      <img src="images/caroussel/lotBosch.jpg" class="d-block w-100" alt="KIT 3 OUTILS 18V Perceuse Meuleuse Perforateur BOSCH Pro - 0615990M0W">
+    </div>
+    <div class="carousel-item">
+      <img src="images/caroussel/lotDewalt.jpg" class="d-block w-100" alt="MAKITA Pack 7 outils 18V 5x5Ah - DLX7013PT1">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+            </div>
+        <br>
+        </div>
+        
+    </div>
+    
 {% endblock %}

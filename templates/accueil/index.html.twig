@@ -18,7 +18,7 @@
             
                     <div class="row">
                         <center>
-                        <h1 class="dispaly-1 text-primary text-center">Bienvenue sur BestBrico</h1>
+                        <h1 class="dispaly-1 text-primary text-center">BIENVENUE SUR BESTBRICO</h1>
                         </center>
                         <p class="lead">Tout le matériel dont vous aurez besoin, que ce soit pour vos travaux de construction ou d'aménagement, équiper un bien immobilier,
                         ne cherchez plus, vous êtes au bon endroit. Nous vous proposons un grand choix de marques au meilleur prix, élu meilleur site par nos artisans.</p>
@@ -46,10 +46,32 @@
             </div>
             </div> 
         </div>
-    <div>
-        <center>
-            <p>Pour commander : <a class="btn btn-primary btn-sm" href="{{ path("registration") }}" role="button">Créer votre compte</a></p> 
-        </center>
+    <div class="text-center mt-4">
+            <p>Je crée mon compte : <a class="btn btn-primary btn-sm" href="{{ path("registration") }}" role="button" title="Cliquez ici">Création de compte</a></p> 
     </div>
+    
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+    <h2 class="text-center mt-4">Nos offres en pack chantier !</h2>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="images/caroussel/lotAEG.jpg" class="d-block w-100" alt="MAKITA Kit MK1101 (DDF482+DHR171+ DGA504+ DTD152+ DJV182+ DSS610+ DJR186+ DBO180+ DTM51+ DML802+ DTW190+3x5,0Ah+DC18RD+2xLXT600)">
+    </div>
+    <div class="carousel-item">
+      <img src="images/caroussel/lotBosch.jpg" class="d-block w-100" alt="KIT 3 OUTILS 18V Perceuse Meuleuse Perforateur BOSCH Pro - 0615990M0W">
+    </div>
+    <div class="carousel-item">
+      <img src="images/caroussel/lotDewalt.jpg" class="d-block w-100" alt="MAKITA Pack 7 outils 18V 5x5Ah - DLX7013PT1">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<br>
     
 {% endblock %}
