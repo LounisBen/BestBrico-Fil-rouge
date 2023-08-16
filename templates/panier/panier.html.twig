@@ -23,8 +23,20 @@
                     {% for article in liste %}
                         <tr class="table-secondary">
                             <td>{{ article.produit.nom }}</td>
-                            <td>{{ article.produit.image }}
-                                <img style="max-width: 50%;" src="{{ vich_uploader_asset(article.produit, 'imageFile')}}"> 
+                            <td>
+                                {% if article.produit.imageName %}
+                                    <div class="produitImage">
+                                        <a href="{{ path("app_detail", { id: article.produit.id }) }}">
+                                            <img style="width: 100px; height: 100px;" src="{{ vich_uploader_asset(article.produit, 'imageFile') }}">
+                                        </a>
+                                    </div>
+                                {% elseif article.produit.sousCategorie.imagesrc %}
+                                    <a href="{{ path("app_detail", { id: article.produit.id }) }}">
+                                        <img style="max-width:100px; height: 100px;" src="/images/sous_categorie/{{ article.produit.sousCategorie.imagesrc }}">
+                                    </a>
+                                {% else %}
+                                    <img style="max-width:200px; height: 200px;" src="/images/placeholder.jpg" alt="">
+                                {% endif %}
                             </td>
                             <td>{{ article.produit.prix / 100 }} €</td>
                             <td>{{ article.quantite }}</td>
@@ -51,14 +63,14 @@
                             <td colspan="4">Total du panier :</td>
                             <td> {{ total / 100 }} € H.T</td>
                             <td>
-                                <a href="/empty" class="btn btn-outline-danger btn-sm">Vider le panier</a>
+                                <a href="/empty" class="btn btn-outline-danger btn-sm mb-2 float-end">Vider le panier</a>
                             </td>
                         </tr>
                     </tfoot>
                 </table>
-                <center>
-                <a href="{{ path('app_commande') }}" class="btn btn-outline-primary">Commander</a>
-                </center>
+                
+                <a href="{{ path('app_commande') }}" class="btn btn-outline-primary mb-2 float-end">Commander</a>
+                
                 <form>
                 <input type="button" class="btn btn-outline-primary" value="<< Retour" onclick="history.go(-1)">
                 </form>
@@ -91,3 +103,5 @@
     </div>
     
 {% endblock %}
+
+
