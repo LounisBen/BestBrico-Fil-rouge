@@ -18,3 +18,7 @@
 .phpunit.result.cache
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
+# Ne seront plus pris en compte dans le commit
+# /public/images/produit/* 
+# pour etre pris en compte dans le commit         
+# !/public/images/placeholder.jpg

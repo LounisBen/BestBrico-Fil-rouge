@@ -4,28 +4,28 @@
 {% endblock %}
 
 {% block body %}
-<div class="content-container" style="margin-top: 90px;">
+<div class="content-container" style="margin-top: 100px;">
     <main class="container">
         <section class="row">
-            <div class="col-12">
+            <div>
                 <h1>{{ detail.nom }}</h1>
             </div>
-            <div class="col-6">
-                {# <img style="max-width:50%;" src="{{ vich_uploader_asset(detail, 'imageFile')}}"> #}
+            <div class="col-4">
+                
                 {% if detail.imageName %}
                 <div class="produitImage">
                 <a href="{{ path("app_detail", { id: detail.id }) }}">
-                    <img style="width: 200px; height: 200px;" src="{{ vich_uploader_asset(detail, 'imageFile') }}">
+                    <img style="width:400px; height: 400px;" src="{{ vich_uploader_asset(detail, 'imageFile') }}">
                  </a>
                 </div>
                 {% else %}
                 <div>
                     {% if detail.souscategorie.imagesrc %}
                         <a href="{{ path("app_detail", { id: detail.id }) }}">
-                            <img style="max-width:200px; height: 200px;" src="/images/sous_categorie/{{ detail.souscategorie.imagesrc }}">
+                            <img style="max-width:400px; height: 400px;" src="/images/sous_categorie/{{ detail.souscategorie.imagesrc }}">
                         </a>
                     {% else %}
-                        <img style="max-width:200px; height: 200px;" src="/images/placeholder.jpg" alt="">
+                        <img style="max-width:400px; height: 400px;" src="/images/placeholder.jpg" alt="">
                     {% endif %}
                 </div>
                 {% endif %} 
@@ -36,13 +36,15 @@
                 <p>Secteur : {{ detail.SousCategorie.nom }}</p>
                 <p>Prix : {{ detail.prix / 100 }} € H.T</p>
                 {% if detail.stock > 0 %}
-                    <a href="{{ path('app_add', {id: detail.id}) }}" class="btn btn-success">Ajouter au panier</a>
+                    <a href="{{ path('app_add', {id: detail.id}) }}" class="btn btn-success bg-secondary" title="clique ici">Ajouter au panier</a>
                 {% else %}
                     <p class="text-danger">Temporairement en rupture de stock</p>
                 {% endif %}
             </div>
         </section>
-    <a href="{{ path("app_produit", { id: detail.souscategorie.id }) }}", class="badge bg-primary mb-4" title="Revenir au secteur">Retour</a>
+    <div class="container mt-4">
+    <a href="{{ path("app_produit", { id: detail.souscategorie.id }) }}", class="badge bg-primary mt-4" title="Revenir au secteur">Retour</a>
+    </div>
     
     </main>
 </div>

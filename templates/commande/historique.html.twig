@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BestBrico - Mon historique{% endblock %}
+
+{% block body %}
+    <div class="container mt-4 border border-dark">
+
+        <center> <h1 class="mb-4">Mes Commandes</h1></center>
+        <hr class="my-2">
+        
+                
+        <table class="table table-hover mt-4">
+            <thead>
+                <tr>
+                    <th class="text-center align-middle" scope="col">N° de commande</th>
+                    <th class="text-center align-middle" scope="col">Date de commande</th>
+                    <th class="text-center align-middle" scope="col">Produit</th>
+                    <th class="text-center align-middle" scope="col">Quantité</th>
+                    <th class="text-center align-middle" scope="col">Prix unitaire</th>
+                    <th class="text-center align-middle" scope="col">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for commande in commandes %}
+                    {% set total = 0 %} {# On stock la somme des {{ detailCommande.prixTotal }} pour avoir le total de la commande #}
+                        {% for detailCommande in commande.detailCommandes %}
+                        <tr class="table-secondary">
+                            <th class="text-center align-middle" scope="row">{{ commande.id }}</th>
+                            <td class="text-center align-middle">{{ commande.dateCommande|date('d/m/Y') }}</td>
+                            <td class="text-center align-middle">{{ detailCommande.produit.nom }}</td>
+                            <td class="text-center align-middle">{{ detailCommande.quantite }} </td>   
+                            <td class="text-center align-middle">{{ detailCommande.produit.prix }} € </td> 
+                            <td class="text-center align-middle">{{ detailCommande.produit.prix * detailCommande.quantite}} € </td>  
+                            {# {% set total = total + detailCommande.total %}  #}
+                        {% set total = total + detailCommande.prix %}
+                             
+                        {% endfor %}</td>  
+                        <td class="text-center align-middle">{{ total }}€</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% if commandes is empty %}
+            <p class="mt-4">Il n'y a pas d'adresse enregistrée...</p>
+        {% endif %}
+        
+    </div>
+    
+{% endblock %}

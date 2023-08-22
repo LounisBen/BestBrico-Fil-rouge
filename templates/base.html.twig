@@ -20,7 +20,9 @@
         {% endblock %}
     </head>
     <body>
+        
         {{ render(controller('App\\Controller\\NavController::index')) }}
+        
         {% block body %}{% endblock %}
     {% block footer %}
         

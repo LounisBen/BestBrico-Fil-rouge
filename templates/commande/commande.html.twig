@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CommandeController!{% endblock %}
+{% block title %}Création de la commande {% endblock %}
 
 {% block body %}
 {% for message in app.flashes('success') %}          
@@ -8,5 +8,112 @@
             {{ message }}
         </div>
     {% endfor %}
+    <div class="container mt-3">
+        <div class="row">
+        <h1 class="text-center">Commande n° {{ commande.id }} du {{ commande.dateCommande|date('d/m/Y') }}</h1>
+         <hr>   
+            <div class="col-lg-5">
+            {% for message in app.flashes('success') %}          
+            <div class="alert alert-success mt-4">           
+                {{ message }}
+            </div>
+        {% endfor %}
+                
+            {{ form_start(form) }}
+            
+            <h3 class="fs-base fw-normal text-center text-uppercase mt-4 ">
+            <span class="text-decoration-underline mt-4" >Détails de la livraison</span>
+            </h3>
+                   
+            <h3 class="fs-base fw-normal text-body mt-3 mb-3">1.
+            <span class="text-decoration-underline ms-1" >Choisir votre adresse de livraison</span>
+            </h3>
+            <div class="text-center">{{ form_row(form.adresses)|replace({'[-br]' : '</br>'})|raw }}</div>
+            
+            <h3 class="fs-base fw-normal text-body mt-4">2.
+            <span class="text-decoration-underline ms-1" >Choisir votre type de transport</span>
+            </h3>
+            <div class="text-center">{{ form_row(form.livraison)|replace({'[-br]' : '</br>'})|raw }}</div>
+            
+            </div>
+            
+            <div class="col-lg-6 offset-lg-1">
+                <h3 class="fs-base fw-normal text-center text-uppercase mt-4">
+            <span class="text-decoration-underline ms-1" >Récapitulatif de votre commande</span>
+                </h3>
+            
+            <table class="table text-center mt-5">
+                    <thead>
+                        <tr>
+                            <th style="width: 30%;">Produit</th>
+                            <th scope="col">Image</th>
+                            <th scope="col" style="width: 15%;">Prix</th>
+                            <th scope="col">Quantité</th>
+                            <th scope="col" style="width: 15%;">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            {% for article in liste %}
+                       
+                        <tr class="table-secondary">
+                            <td>{{ article.produit.nom }}</td>
+                            <td>
+                                {% if article.produit.imageName %}
+                                    <div class="produitImage">
+                                        <a href="{{ path("app_detail", { id: article.produit.id }) }}">
+                                            <img style="width: 50px; height: 50px;" src="{{ vich_uploader_asset(article.produit, 'imageFile') }}">
+                                        </a>
+                                    </div>
+                                {% elseif article.produit.sousCategorie.imagesrc %}
+                                    <a href="{{ path("app_detail", { id: article.produit.id }) }}">
+                                        <img style="max-width:100px; height: 100px;" src="/images/sous_categorie/{{ article.produit.sousCategorie.imagesrc }}">
+                                    </a>
+                                {% else %}
+                                    <img style="max-width:200px; height: 200px;" src="/images/placeholder.jpg" alt="">
+                                {% endif %}
+                            </td>
+                            <td>{{ article.produit.prix / 100 }} €</td>
+                            <td>{{ article.quantite }}</td>
+                            <td>{{ article.quantite * article.produit.prix / 100}} €</td>
+                            
+                        </tr>
+                    
+                   
+                
+            {% endfor %}
+                    </tbody>
+            </table>
+            <table class="table table-hover">
+                    <tfoot>
+                        <tr>
+                            <td colspan="6">Total de la commande H.T  :</td>
+                            <td> {{ total / 100 }} €</td>
+                        </tr>
+                        <tr>
+                            <td colspan="6">TVA 20 %  :</td>
+                            <td>{{ total * 0.2 }} €</td>
+                        </tr>
+                        <tr>
+                            <td colspan="6">Total de votre commande TTC  :</td>
+                            <td>{{ total * 0.2 }} €</td>
+                        </tr>
+                    </tfoot>        
+            </table>
+            <div class="text-center">{{form_row(form.submit)}}</div>
+            </div>
 
+
+            
+            
+            {{ form_end(form)}}
+        <form>
+            <div class="text-left mb-4">
+                <input type="button" class="btn btn-outline-primary btn-sm mt-4" title="retour à la page précédente" value="<< Retour" onclick="history.go(-1)">
+            </div>
+        </form>   
+        <br>
+        
+     </div>   
+   </div>
+   
 {% endblock %}

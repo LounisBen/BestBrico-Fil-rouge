@@ -5,6 +5,7 @@
 {% block body %}
  
     <div class="container mx-auto mt-4">
+        
         {% for message in app.flashes('success') %}          
         <div class="alert alert-success mt-4">           
             {{ message }}
@@ -15,7 +16,13 @@
             <div class="jumbotron">
                   
                 <div class="container">
-            
+
+                    {% for message in app.flashes('success') %}          
+                <div class="alert alert-success mt-4">           
+                    {{ message }}
+                </div>
+                
+            {% endfor %}
                     <div class="row">
                         <center>
                         <h1 class="dispaly-1 text-primary text-center">BIENVENUE SUR BESTBRICO</h1>
@@ -71,7 +78,9 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
+  <br>
+  </div>
 </div>
-<br>
+
     
 {% endblock %}

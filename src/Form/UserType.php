@@ -29,24 +29,24 @@ class UserType extends AbstractType
             ],
             'label' => 'Prénom :' 
         ])
-          ->add('adresse', TextType::class, [
-             'attr' => [
-                 'class' => 'form-control'
-             ],
-             'label' => 'Adresse :'
-        ])
-         ->add('codePostal', TextType::class, [
-             'attr' => [
-                 'class' => 'form-control'
-             ],
-             'label' => 'Code Postal :'
-        ])
-         ->add('ville', TextType::class, [
-             'attr' => [
-                 'class' => 'form-control'
-             ],
-             'label' => 'Ville :'
-        ])
+        //   ->add('adresse', TextType::class, [
+        //      'attr' => [
+        //          'class' => 'form-control'
+        //      ],
+        //      'label' => 'Adresse :'
+        // ])
+        //  ->add('codePostal', TextType::class, [
+        //      'attr' => [
+        //          'class' => 'form-control'
+        //      ],
+        //      'label' => 'Code Postal :'
+        // ])
+        //  ->add('ville', TextType::class, [
+        //      'attr' => [
+        //          'class' => 'form-control'
+        //      ],
+        //      'label' => 'Ville :'
+        // ])
 
         ->add('plainPassword', PasswordType::class, [
             'attr' => [

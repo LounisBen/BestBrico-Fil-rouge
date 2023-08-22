@@ -3,11 +3,13 @@
 namespace App\DataFixtures;
 
 use Faker\Factory;
+use App\Entity\User;
 use Faker\Generator;
+use App\Entity\Adresse;
 use App\Entity\Produit;
 use App\Entity\Categorie;
+use App\Entity\Livraison;
 use App\Entity\SousCategorie;
-use App\Entity\User;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -28,69 +30,63 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
 
-        // USERS
-        $users = [];
+                // USERS
+                $users = [];
 
-        $admin = new User();
-        $admin->setEmail('admin@bestbrico.com')
-            ->setRoles(["ROLE_USER", "ROLE_ADMIN"])
-            ->setNom('administrateur') 
-            ->setPrenom('admin')
-            ->setAdresse('5 rue Vulfran Mollet')
-            ->setCodePostal('80000') 
-            ->setVille('Amiens')
-            ->setPlainPassword('password');           
+                $admin = new User();
+                $admin->setEmail('admin@bestbrico.com')
+                    ->setRoles(["ROLE_USER", "ROLE_ADMIN"])
+                    ->setNom('administrateur') 
+                    ->setPrenom('admin')
+                    ->setPlainPassword('admin');           
+                    
+                $users[] = $admin;
+                $manager->persist($admin);
+
+                
+            for ($j = 1; $j <=5; $j++)
+                { 
+                $user = new User();
+                $user->setEmail($this->faker->email);
+                $user ->setRoles(["ROLE_USER"]);
+                $user->setNom($this->faker->name) ;
+                $user->setPrenom($this->faker->firstName);
+                $user->setPlainPassword('passwd');
+                
+                $users[] = $user;
+                $manager->persist($user);
+                }
+
+                // CATEGORIES
+                $Categorie1 = new Categorie();
+                $Categorie1->setNom("Gros.oeuvre");
+                $Categorie1->setImagesrc("/grosOeuvre.jpg");
+                $manager->persist($Categorie1);
             
-        $users[] = $admin;
-        $manager->persist($admin);
+                $Categorie2 = new Categorie();
+                $Categorie2->setNom("Menuiserie");
+                $Categorie2->setImagesrc("/menuiserie.jpg");
+                $manager->persist($Categorie2);
+            
+                $Categorie3 = new Categorie();
+                $Categorie3->setNom("Electricité");
+                $Categorie3->setImagesrc("/electricite.jpg");
+                $manager->persist($Categorie3);
 
-        
-    for ($j = 1; $j <=5; $j++)
-        { 
-        $user = new User();
-        $user->setEmail($this->faker->email);
-        $user ->setRoles(["ROLE_USER"]);
-        $user->setNom($this->faker->name) ;
-        $user->setPrenom($this->faker->firstName);
-        $user->setAdresse($this->faker->streetAddress());
-        $user->setCodePostal(str_replace(' ','', $this->faker->postcode)); 
-        $user->setVille($this->faker->city);
-        $user->setPlainPassword('password');
-        
-        $users[] = $user;
-        $manager->persist($user);
-        }
+                $Categorie4 = new Categorie();
+                $Categorie4->setNom("Plomberie.Sanitaire");
+                $Categorie4->setImagesrc("/plomberieSanitaire.jpg");
+                $manager->persist($Categorie4);
 
-        // CATEGORIES
-        $Categorie1 = new Categorie();
-        $Categorie1->setNom("Gros.oeuvre");
-        $Categorie1->setImagesrc("/grosOeuvre.jpg");
-        $manager->persist($Categorie1);
-       
-        $Categorie2 = new Categorie();
-        $Categorie2->setNom("Menuiserie");
-        $Categorie2->setImagesrc("/menuiserie.jpg");
-        $manager->persist($Categorie2);
-       
-        $Categorie3 = new Categorie();
-        $Categorie3->setNom("Electricité");
-        $Categorie3->setImagesrc("/electricite.jpg");
-        $manager->persist($Categorie3);
+                $Categorie5 = new Categorie();
+                $Categorie5->setNom("Outillage");
+                $Categorie5->setImagesrc("/outillage.jpg");
+                $manager->persist($Categorie5);
 
-        $Categorie4 = new Categorie();
-        $Categorie4->setNom("Plomberie.Sanitaire");
-        $Categorie4->setImagesrc("/plomberieSanitaire.jpg");
-        $manager->persist($Categorie4);
-
-        $Categorie5 = new Categorie();
-        $Categorie5->setNom("Outillage");
-        $Categorie5->setImagesrc("/outillage.jpg");
-        $manager->persist($Categorie5);
-
-        $Categorie6 = new Categorie();
-        $Categorie6->setNom("Peinture");
-        $Categorie6->setImagesrc("/peinture.jpg");
-        $manager->persist($Categorie6);
+                $Categorie6 = new Categorie();
+                $Categorie6->setNom("Peinture");
+                $Categorie6->setImagesrc("/peinture.jpg");
+                $manager->persist($Categorie6);
 
                 // SOUS CATEGORIES
                 $SousCategorie1 = new SousCategorie();
@@ -164,7 +160,23 @@ class AppFixtures extends Fixture
                 $SousCategorie12->setImagesrc("/droguerie.jpg");
                 $SousCategorie12->setCategorie($Categorie6);
                 $manager->persist($SousCategorie12);
-         
+
+                // Livraison
+
+                $Livraison1 = new Livraison();
+                $Livraison1->setTitre("Standard");
+                $Livraison1->setDescriptif("2 à 3 jours ouvrés");
+                $Livraison1->setPrix(8900);
+                $manager->persist($Livraison1);
+
+                $Livraison2 = new Livraison();
+                $Livraison2->setTitre("Express");
+                $Livraison2->setDescriptif("24 h");
+                $Livraison2->setPrix(14900);
+                $manager->persist($Livraison2);
+
+
+
                 // PRODUITS
        for ($i=1 ; $i < 60 ; $i++ ) { 
             $produit = new Produit();
@@ -178,6 +190,32 @@ class AppFixtures extends Fixture
             
             $manager->persist($produit);
        }
+
+            /// Générer des adresses uniques pour chaque utilisateur
+        $addresses = [];
+        foreach ($users as $user) {
+            for ($i = 0; $i < 2; $i++) {
+                $adresse = new Adresse();
+                $adresse->setTitre('Mon domicile');
+                $adresse->setSociete('');
+                $adresse->setNom($this->faker->word(1, true));
+                $adresse->setPrenom($this->faker->word(1, true));
+                $adresse->setAdresse($this->faker->streetAddress());
+                $adresse->setVille($this->faker->city());
+                $adresse->setCodePostal(str_replace(' ', '', $this->faker->postcode));
+                $adresse->setPays($this->faker->country());
+                $adresse->setTelephone('00.00.00.00.00');
+                $adresse->setUser($user); // Affecter l'utilisateur à l'adresse
+                $addresses[] = $adresse;
+                $manager->persist($adresse);
+            }
+        }
+
+        // Affecter les adresses précédemment créées aux utilisateurs
+        foreach ($addresses as $adresse) {
+            $adresse->getUser()->addAdresse($adresse);
+        }
+
 
         $manager->flush();
     }

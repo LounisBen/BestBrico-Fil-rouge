@@ -6,16 +6,22 @@ use App\Repository\SousCategorieRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-
+use ApiPlatform\Metadata\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 #[ORM\Entity(repositoryClass: SousCategorieRepository::class)]
+#[ApiResource(
+    normalizationContext: [ "groups" => ["read:sousCategorie"]]
+)]
 class SousCategorie
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(["read:product"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 150)]
+    #[Groups(["read:product"])]
     private ?string $nom = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -24,7 +30,7 @@ class SousCategorie
     #[ORM\ManyToOne(inversedBy: 'sousCategories')]
     private ?Categorie $categorie = null;
 
-    #[ORM\OneToMany(mappedBy: 'sousCategorie', targetEntity: Produit::class)]
+    #[ORM\OneToMany(mappedBy: 'sousCategorie', targetEntity: Produit::class, orphanRemoval: true, cascade: ['persist'])]
     private Collection $produits;
 
     public function __construct()

@@ -18,6 +18,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 
 class ProduitCrudController extends AbstractCrudController
 {
@@ -77,7 +78,7 @@ class ProduitCrudController extends AbstractCrudController
                         'class' => SousCategorie::class,
                         'choices' => $sousCategories,
                     ]),
-                NumberField::new('prix'),
+                MoneyField::new('prix')->setCurrency('EUR'),
                 IntegerField::new('stock'),
                 TextField::new('imageFile')->setFormType(VichImageType::class),
             ];
@@ -93,7 +94,7 @@ class ProduitCrudController extends AbstractCrudController
                         'class' => SousCategorie::class,
                         'choices' => $sousCategories,
                     ]),
-                NumberField::new('prix'),
+                MoneyField::new('prix')->setCurrency('EUR'),
                 IntegerField::new('stock'),
                 TextField::new('imageFile')->setFormType(VichImageType::class),
             ];
@@ -105,7 +106,7 @@ class ProduitCrudController extends AbstractCrudController
                 TextField::new('nom'),
                 TextField::new('sousCategorie'),
                 TextareaField::new('description'),
-                NumberField::new('prix'),
+                MoneyField::new('prix')->setCurrency('EUR'),
                 IntegerField::new('stock'),
                 ImageField::new('imageName', 'Image')->setBasePath('/images/produit'),
                 DateTimeField::new('createdAt'),
@@ -118,7 +119,7 @@ class ProduitCrudController extends AbstractCrudController
                 IdField::new('id'),
                 TextField::new('nom'),
                 TextField::new('sousCategorie'),
-                NumberField::new('prix'),
+                MoneyField::new('prix')->setCurrency('EUR'),
                 IntegerField::new('stock'),
                 ImageField::new('imageName', 'Image')->setBasePath('/images/produit')
             ];

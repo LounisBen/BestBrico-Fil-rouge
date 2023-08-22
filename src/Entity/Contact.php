@@ -5,36 +5,45 @@ namespace App\Entity;
 use App\Repository\ContactRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-
+use ApiPlatform\Metadata\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
-#[ORM\Entity(repositoryClass: ContactRepository::class)]
+#[ApiResource(
+    normalizationContext: [ "groups" => ["read:produit"]]
+)]#[ORM\Entity(repositoryClass: ContactRepository::class)]
 class Contact
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(["read:product"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 50, nullable: true)]
     #[Assert\Length(min: 2, max: 50)]
+    #[Groups(["read:product"])]
     private ?string $nom = null;
 
     #[ORM\Column(length: 180)]
     #[Assert\Email()]
     #[Assert\Length(min: 2, max: 180)]
+    #[Groups(["read:product"])]
     private ?string $email = null;
 
     #[ORM\Column(length: 100, nullable: true)]
     #[Assert\Length(min: 2, max: 100)]
+    #[Groups(["read:product"])]
     private ?string $sujet = null;
 
     #[ORM\Column(type: Types::TEXT)]
     #[Assert\NotBlank()]
+    #[Groups(["read:product"])]
     private ?string $message = null;
 
     #[ORM\Column]
     #[Assert\NotNull()]
+    #[Groups(["read:product"])]
     private ?\DateTimeImmutable $createdAt = null;
 
     public function __construct()

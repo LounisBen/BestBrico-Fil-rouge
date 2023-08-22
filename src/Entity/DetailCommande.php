@@ -5,7 +5,9 @@ namespace App\Entity;
 use App\Repository\DetailCommandeRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+
 #[ORM\Entity(repositoryClass: DetailCommandeRepository::class)]
+
 class DetailCommande
 {
     #[ORM\Id]
@@ -78,5 +80,9 @@ class DetailCommande
         $this->commande = $commande;
 
         return $this;
+    }
+    public function __toString(): string
+    {
+        return "Ligne " . $this->getId() . " : " . $this->getProduit() . " x" . $this->getQuantite();
     }
 }

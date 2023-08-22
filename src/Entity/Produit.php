@@ -6,24 +6,30 @@ use App\Repository\ProduitRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-
+use ApiPlatform\Metadata\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ProduitRepository::class)]
+#[ApiResource(
+    normalizationContext: [ "groups" => ["read:produit"]]
+)]
 #[Vich\Uploadable]
 class Produit
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(["read:product"])]
     private ?int $id = null;
 
     #[ORM\Column(length: 150)]
     #[Assert\NotBlank()]
     #[Assert\Length(min: 2, max: 150)]
+    #[Groups(["read:product"])]
     private ?string $nom = null;
 
     #[Vich\UploadableField(mapping: 'produit_images', fileNameProperty: 'imageName')]
@@ -34,11 +40,13 @@ class Produit
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank()]
+    #[Groups(["read:product"])]
     private ?string $description = null;
 
     #[ORM\Column]
     #[Assert\NotNull()]
     #[Assert\Positive()]
+    #[Groups(["read:product"])]
     private ?float $prix = null;
 
     #[ORM\Column]
@@ -50,10 +58,12 @@ class Produit
     private ?string $image = null;
 
     #[ORM\Column]
+    #[Groups(["read:product"])]
     private ?bool $actif = null;
 
     #[ORM\ManyToOne(inversedBy: 'produits')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Groups(["read:product"])]
     private ?SousCategorie $sousCategorie = null;
 
     #[ORM\OneToMany(mappedBy: 'produit', targetEntity: DetailCommande::class)]
@@ -61,10 +71,12 @@ class Produit
 
     #[ORM\Column]
     #[Assert\NotNull()] 
+    #[Groups(["read:product"])]
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\Column]
     #[Assert\NotNull()]
+    #[Groups(["read:product"])]
     private ?\DateTimeImmutable $updatedAt = null;
 
     public function __construct()
@@ -273,4 +285,6 @@ class Produit
     {
         return $this->getId() . " | " . $this->getNom();
     }
+
+    
 }
