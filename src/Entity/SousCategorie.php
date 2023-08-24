@@ -33,6 +33,9 @@ class SousCategorie
     #[ORM\OneToMany(mappedBy: 'sousCategorie', targetEntity: Produit::class, orphanRemoval: true, cascade: ['persist'])]
     private Collection $produits;
 
+    #[ORM\Column(length: 255)]
+    private ?string $descriptif = null;
+
     public function __construct()
     {
         $this->produits = new ArrayCollection();
@@ -112,5 +115,17 @@ class SousCategorie
     public function __toString(): string
     {
         return $this->getId() . " | " . $this->getNom();
+    }
+
+    public function getDescriptif(): ?string
+    {
+        return $this->descriptif;
+    }
+
+    public function setDescriptif(string $descriptif): static
+    {
+        $this->descriptif = $descriptif;
+
+        return $this;
     }
 }

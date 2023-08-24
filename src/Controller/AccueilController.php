@@ -7,9 +7,11 @@ use App\Entity\Categorie;
 use App\Entity\SousCategorie;
 use App\Repository\ProduitRepository;
 use App\Repository\CategorieRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 
 class AccueilController extends AbstractController
 {
@@ -37,9 +39,13 @@ class AccueilController extends AbstractController
     }
 
     #[Route('/souscategorie/{id}', name: 'app_produit')]
-    public function produit(SousCategorie $souscategorie): Response
+    public function produit(SousCategorie $souscategorie,  PaginatorInterface $paginator, Request $request): Response
     {
-        $produits = $souscategorie->getProduits();
+        $produits = $paginator->paginate(
+            $souscategorie->getProduits(),
+            $request->query->getInt('page', 1),
+            6
+        );
         
         return $this->render('accueil/souscategorie.html.twig', [
             'produits' => $produits,

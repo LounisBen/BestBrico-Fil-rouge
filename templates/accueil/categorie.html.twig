@@ -3,7 +3,7 @@
 {% block title %}Welcome{% endblock %}
 
 {% block body %}
-<div class="content-container" style="margin-top: 80px;">
+<div class="content-container" style="margin-top: 100px;">
 <div class="container mx-auto mt-4">
     <div class="row">
         <center><h1>{{ categorie.nom }}</h1></center>
@@ -13,13 +13,23 @@
             {% for sc in sousCategories %}
             <div class="card d-flex col-5 ms-4">
                 <a href="{{ path("app_produit", {id: sc.id}) }}">
+                    
                     <div class="card text-white bg-primary mb-4 ">
                         <div class="card-header d-flex justify-content-center h3">{{ sc.nom }}</div>
+                        {# <div class="card-text d-flex justify-content-center">{{ sc.descriptif }}</div> #}
+
                         <div class="card-body d-flex flex-column align-items-center justify-content-center">
+                         <div style="height: 100px; overflow: hidden;"> <!-- Limit the height of descriptif -->
+                                {{ sc.descriptif }}
+                            </div>
                             <img src="/images/sous_categorie{{ sc.imagesrc }}" alt="souscategorie" style="max-height: 300px; width: 100%;">
-                            <p></p>
-                            <a href="{{ path("app_produit", {id: sc.id}) }}" class="btn btn-outline-dark">Voir les produits</a>
+                             
+                            
+                            
+                            <a href="{{ path("app_produit", {id: sc.id}) }}" class="btn btn-outline-dark mt-4">Voir les produits</a>
+                        
                         </div>
+                    
                     </div>
                 </a>
             </div>

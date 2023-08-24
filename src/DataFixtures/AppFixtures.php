@@ -59,104 +59,116 @@ class AppFixtures extends Fixture
 
                 // CATEGORIES
                 $Categorie1 = new Categorie();
-                $Categorie1->setNom("Gros.oeuvre");
+                $Categorie1->setNom("GROS OEUVRE");
                 $Categorie1->setImagesrc("/grosOeuvre.jpg");
                 $manager->persist($Categorie1);
             
                 $Categorie2 = new Categorie();
-                $Categorie2->setNom("Menuiserie");
+                $Categorie2->setNom("MENUISERIE");
                 $Categorie2->setImagesrc("/menuiserie.jpg");
                 $manager->persist($Categorie2);
             
                 $Categorie3 = new Categorie();
-                $Categorie3->setNom("Electricité");
+                $Categorie3->setNom("ELECTRICITE");
                 $Categorie3->setImagesrc("/electricite.jpg");
                 $manager->persist($Categorie3);
 
                 $Categorie4 = new Categorie();
-                $Categorie4->setNom("Plomberie.Sanitaire");
+                $Categorie4->setNom("PLOMBERIE/SANITAIRE");
                 $Categorie4->setImagesrc("/plomberieSanitaire.jpg");
                 $manager->persist($Categorie4);
 
                 $Categorie5 = new Categorie();
-                $Categorie5->setNom("Outillage");
+                $Categorie5->setNom("OUTILLAGE");
                 $Categorie5->setImagesrc("/outillage.jpg");
                 $manager->persist($Categorie5);
 
                 $Categorie6 = new Categorie();
-                $Categorie6->setNom("Peinture");
+                $Categorie6->setNom("PEINTURE");
                 $Categorie6->setImagesrc("/peinture.jpg");
                 $manager->persist($Categorie6);
 
                 // SOUS CATEGORIES
                 $SousCategorie1 = new SousCategorie();
                 $SousCategorie1->setNom("Construction");
+                $SousCategorie1->setDescriptif("Tous vos matériaux, du parpaing à la charpente pour vos travaux de rénovation ou de construction");
                 $SousCategorie1->setImagesrc("/construction.jpg");
                 $SousCategorie1->setCategorie($Categorie1);
                 $manager->persist($SousCategorie1);
 
                 $SousCategorie2 = new SousCategorie();
                 $SousCategorie2->setNom("Aménagement");
+                $SousCategorie2->setDescriptif("Tous vos produits pour aménager votre intérieur, cloison, isolation");
                 $SousCategorie2->setImagesrc("/amenagement.jpg");
                 $SousCategorie2->setCategorie($Categorie1);
                 $manager->persist($SousCategorie2);
                 
                 $SousCategorie3 = new SousCategorie();
                 $SousCategorie3->setNom("Intérieure");
+                $SousCategorie3->setDescriptif("Tous vos produits bois pour l'intérieur, u tasseau au bloc-porte, revêtements sol, rangement");
                 $SousCategorie3->setImagesrc("/menuiserieInterieure.jpg");
                 $SousCategorie3->setCategorie($Categorie2);
                 $manager->persist($SousCategorie3);
 
                 $SousCategorie4 = new SousCategorie();
                 $SousCategorie4->setNom("Extérieure");
+                $SousCategorie4->setDescriptif("Toutes vos menuiseries pour l'extérieur, fenêtres, portes de garage, portes d'entrée");
                 $SousCategorie4->setImagesrc("/menuiserieExterieure.jpg");
                 $SousCategorie4->setCategorie($Categorie2);
                 $manager->persist($SousCategorie4);
 
                 $SousCategorie5 = new SousCategorie();
                 $SousCategorie5->setNom("Cables.Appareillages");
+                $SousCategorie5->setDescriptif("Cables en bobines, à la découpe, appareillages et accessoires");
                 $SousCategorie5->setImagesrc("/cablesAppareillages.jpg");
                 $SousCategorie5->setCategorie($Categorie3);
                 $manager->persist($SousCategorie5);
 
                 $SousCategorie6 = new SousCategorie();
                 $SousCategorie6->setNom("Chauffage.Domotique");
+                $SousCategorie6->setDescriptif("Notre gamme chauffauge, du radiateur rayonnant au radiateur fonte, ou à inertie séche, gamme VMC, ainsi qu'une gamme complète pour piloter votre foyer");
                 $SousCategorie6->setImagesrc("/chauffageDomotique.jpg");
                 $SousCategorie6->setCategorie($Categorie3);
                 $manager->persist($SousCategorie6);
 
                 $SousCategorie7 = new SousCategorie();
                 $SousCategorie7->setNom("Plomberie");
+                $SousCategorie7->setDescriptif("Cuivre, PER, multicouche, choudières, adoucisseurs,  tout le matériel pour le traitement de l'eau ");
                 $SousCategorie7->setImagesrc("/plomberie.jpg");
                 $SousCategorie7->setCategorie($Categorie4);
                 $manager->persist($SousCategorie7);
 
                 $SousCategorie8 = new SousCategorie();
                 $SousCategorie8->setNom("Sanitaire");
+                $SousCategorie8->setDescriptif("Cabines, receveurs, parois, tout l'équipement pour les salles d'eau");
                 $SousCategorie8->setImagesrc("/sanitaire.jpg");
                 $SousCategorie8->setCategorie($Categorie4);
                 $manager->persist($SousCategorie8);
 
                 $SousCategorie9 = new SousCategorie();
                 $SousCategorie9->setNom("Equipement");
+                $SousCategorie9->setDescriptif("Machines outils, outillage à main, équipements de protection individuelle");
                 $SousCategorie9->setImagesrc("/machinesOutils.jpg");
                 $SousCategorie9->setCategorie($Categorie5);
                 $manager->persist($SousCategorie9);
 
                 $SousCategorie10 = new SousCategorie();
                 $SousCategorie10->setNom("Consommables");
+                $SousCategorie10->setDescriptif("Abrasifs, accessoires machines, visserie et protection");
                 $SousCategorie10->setImagesrc("/consommables.jpg");
                 $SousCategorie10->setCategorie($Categorie5);
                 $manager->persist($SousCategorie10);
 
                 $SousCategorie11 = new SousCategorie();
-                $SousCategorie11->setNom("Peintures.Poudres");
+                $SousCategorie11->setNom("Peintures/Poudres");
+                $SousCategorie11->setDescriptif("Peintures intérieures et extérieures, à la teinte, enduits, platres");
                 $SousCategorie11->setImagesrc("/peinturePoudres.jpg");
                 $SousCategorie11->setCategorie($Categorie6);
                 $manager->persist($SousCategorie11);
 
                 $SousCategorie12 = new SousCategorie();
                 $SousCategorie12->setNom("Droguerie");
+                $SousCategorie12->setDescriptif("Tous le produits d'entretien et de nettoyage pour vos chantiers");
                 $SousCategorie12->setImagesrc("/droguerie.jpg");
                 $SousCategorie12->setCategorie($Categorie6);
                 $manager->persist($SousCategorie12);
@@ -178,7 +190,7 @@ class AppFixtures extends Fixture
 
 
                 // PRODUITS
-       for ($i=1 ; $i < 60 ; $i++ ) { 
+       for ($i=1 ; $i < 240 ; $i++ ) { 
             $produit = new Produit();
             $produit ->setNom($this->faker->word())
                 ->setDescription($this->faker->text(200))

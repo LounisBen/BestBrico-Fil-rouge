@@ -6,6 +6,18 @@
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
+        <style>
+        body {
+            /* Background image styling */
+            background-image: url('/images/fond1.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            /* Other background properties like position, repeat, etc. */
+        }
+        </style>
+        
+        
         {% block stylesheets %}
             <link rel="stylesheet" href="/bootstrap.min.css">
             <link rel="stylesheet" href="/_variables.scss">
@@ -20,9 +32,7 @@
         {% endblock %}
     </head>
     <body>
-        
         {{ render(controller('App\\Controller\\NavController::index')) }}
-        
         {% block body %}{% endblock %}
     {% block footer %}
         
