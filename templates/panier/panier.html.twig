@@ -63,16 +63,16 @@
                             <td colspan="4">Total du panier :</td>
                             <td> {{ total / 100 }} € H.T</td>
                             <td>
-                                <a href="/empty" class="btn btn-outline-danger btn-sm mb-2 float-end">Vider le panier</a>
+                                <a href="/empty" class="btn btn-outline-danger btn-sm mb-2 float-end" title="Mettre le panier à 0">Vider le panier</a>
                             </td>
                         </tr>
                     </tfoot>
                 </table>
                 
-                <a href="{{ path('app_commande') }}" class="btn btn-outline-primary mb-2 float-end">Commander</a>
+                <a href="{{ path('app_commande') }}" class="btn btn-outline-primary mb-2 float-end"  title="Valider votre commande">Commander</a>
                 
                 <form>
-                <input type="button" class="btn btn-outline-primary" value="<< Retour" onclick="history.go(-1)">
+                <input type="button" class="btn btn-outline-primary" title="Revenir à la page précédente" value="<< Retour" onclick="history.go(-1)">
                 </form>
             <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
     <h2 class="text-center mt-4">Nos offres en pack chantier !</h2>

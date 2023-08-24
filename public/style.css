@@ -49,5 +49,9 @@
         height: 350px; /* Ajustez la hauteur comme nécessaire */
 }
 
+.cart-icon {
+  font-size: 30px !important;
+  /* Add more styling properties if needed */
+}
 
 

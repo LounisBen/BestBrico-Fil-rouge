@@ -23,12 +23,13 @@ class PanierController extends AbstractController
         foreach ($panier as $id => $quantite) {
             $produit = $produitRepository->find($id);
 
-            $liste[] = [
-                'produit' => $produit,
-                'quantite' => $quantite
-            ];
-            $total += $produit->getPrix() * $quantite;
-
+            if($produit) {
+                $liste[] = [
+                    'produit' => $produit,
+                    'quantite' => $quantite
+                ];
+                $total += $produit->getPrix() * $quantite;
+            }
         }
         return $this->render('panier/panier.html.twig', [
             'liste' => $liste,

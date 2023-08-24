@@ -19,7 +19,7 @@
                  </a>
                 </div>
                 {% else %}
-                <div>
+                    <div>
                     {% if detail.souscategorie.imagesrc %}
                         <a href="{{ path("app_detail", { id: detail.id }) }}">
                             <img style="max-width:400px; height: 400px;" src="/images/sous_categorie/{{ detail.souscategorie.imagesrc }}">
@@ -27,12 +27,15 @@
                     {% else %}
                         <img style="max-width:400px; height: 400px;" src="/images/placeholder.jpg" alt="">
                     {% endif %}
-                </div>
+                    </div>
                 {% endif %} 
                 
-            </div>    
-            <div class="col-6">
-                <p>{{ detail.description }}</p>
+            </div> 
+
+            <div class="col-6" style="font-size: 20px; color: blue">
+                <div class="card bg-primary text-white">
+                    <div class="card-body">
+                <p >{{ detail.description }}</p>
                 <p>Secteur : {{ detail.SousCategorie.nom }}</p>
                 <p>Prix : {{ detail.prix / 100 }} € H.T</p>
                 {% if detail.stock > 0 %}
@@ -40,6 +43,8 @@
                 {% else %}
                     <p class="text-danger">Temporairement en rupture de stock</p>
                 {% endif %}
+                </div>
+            </div>
             </div>
         </section>
     <div class="container mt-4">

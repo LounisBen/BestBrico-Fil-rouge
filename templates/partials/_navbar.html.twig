@@ -46,10 +46,17 @@
       {% endif %}
       </ul>
       <div class="d-flex me-4">
-                <a href="{{ path('app_panier')}}" class="text-light fw-bold">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                </a>
-      </div>
+    <a href="{{ path('app_panier')}}" class="text-light fw-bold">
+        <i class="fa-solid fa-cart-shopping cart-icon"></i>
+        {% set totalQuantity = 0 %}
+        {% for id, quantite in panier %}
+            {% set totalQuantity = totalQuantity + quantite %}
+        {% endfor %}
+        {{ totalQuantity }} produit(s)
+    </a>
+</div>
+
+
       <form class="d-flex">
         
         <input class="form-control me-sm-2" type="search" placeholder="Que recherchez-vous?">
